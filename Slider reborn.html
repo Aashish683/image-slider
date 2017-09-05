@@ -1,0 +1,54 @@
+<style>
+    * {margin:0;paddding:0}
+    #viewbox {
+        width: 500px;
+        height: 300px;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        position: absolute;
+        overflow: hidden;
+    }
+    #slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        transition: top 0.5s linear;
+    }
+    #slide img {
+        
+    }
+</style>
+
+<div id="viewbox">
+    <div id="slide">
+        <img src="image1.jpg" />
+        <img src="image2.jpg" />
+        <img src="image3.jpg" />
+        <img src="image4.jpg" />
+    </div>
+</div>
+
+<script>
+slide.style.top = "0px";
+function up() {
+    var imageHeight = document.querySelector('#slide img').clientHeight;
+    if(parseInt(slide.style.top) == -1 * parseInt(slide.clientHeight) + imageHeight)
+        slide.style.top = "0px";
+    else
+        slide.style.top = parseInt(slide.style.top) - imageHeight;
+}
+function down() {
+    var imageHeight = document.querySelector('#slide img').clientHeight;
+    if(parseInt(slide.style.top) == 0)
+        slide.style.top = -1* (parseInt(slide.clientHeight) - imageHeight);
+    else
+        slide.style.top = parseInt(slide.style.top) + imageHeight;
+}
+document.body.onkeydown = function(e){
+    if(e.keyCode == 38) down();
+    else if(e.keyCode == 40) up();
+}
+</script>
